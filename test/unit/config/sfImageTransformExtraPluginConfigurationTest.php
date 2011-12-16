@@ -39,7 +39,7 @@ class sfImageTransformExtraPluginConfigurationTest extends PHPUnit_Framework_Tes
       $event = new sfEvent($this, 'controller.change_action', array('module' => 'sfImageTransformator', 'action' => 'index'));
       sfImageTransformExtraPluginConfiguration::setViewCache($event);
       $viewCacheManager = sfContext::getInstance(sfConfig::get('sf_app'))->getViewCacheManager();
-      $this->assertType('sfRawFileCache', $viewCacheManager->getCache());
+      $this->assertInstanceOf('sfRawFileCache', $viewCacheManager->getCache());
     }
     else
     {
@@ -49,19 +49,19 @@ class sfImageTransformExtraPluginConfigurationTest extends PHPUnit_Framework_Tes
 
   public function testGetCache()
   {
-    $this->assertType('sfRawFileCache', sfImageTransformExtraPluginConfiguration::getCache());
+    $this->assertInstanceOf('sfRawFileCache', sfImageTransformExtraPluginConfiguration::getCache());
   }
 
   public function testGetRoute()
   {
     $route = sfImageTransformExtraPluginConfiguration::getRoute('sf_image');
-    $this->assertType('sfImageTransformRoute', $route);
+    $this->assertInstanceOf('sfImageTransformRoute', $route);
   }
 
   public function testGetRouteWithProjectConfiguration()
   {
     $route = sfImageTransformExtraPluginConfiguration::getRoute('sf_image', $this->projectConfiguration);
-    $this->assertType('sfImageTransformRoute', $route);
+    $this->assertInstanceOf('sfImageTransformRoute', $route);
   }
 
   /**

@@ -67,7 +67,7 @@ class sfImageTransformManagerTest extends PHPUnit_Framework_TestCase
   public function test__construct()
   {
     $manager = new sfImageTransformManager($this->dummy_formats);
-    $this->assertType('sfImageTransformManager', $manager);
+    $this->assertInstanceOf('sfImageTransformManager', $manager);
   }
 
   /**
@@ -76,7 +76,7 @@ class sfImageTransformManagerTest extends PHPUnit_Framework_TestCase
   public function testGenerateWrongFormat()
   {
     $manager = new sfImageTransformManager($this->dummy_formats);
-    $this->assertType('sfImage', $manager->generate('sfImageSource://mock', 'doesnotexist'));
+    $this->assertInstanceOf('sfImage', $manager->generate('sfImageSource://mock', 'doesnotexist'));
   }
 
   /**
@@ -85,13 +85,13 @@ class sfImageTransformManagerTest extends PHPUnit_Framework_TestCase
   public function testGenerateIncompleteFormat()
   {
     $manager = new sfImageTransformManager($this->dummy_failing_formats);
-    $this->assertType('sfImage', $manager->generate('sfImageSource://mock', 'original'));
+    $this->assertInstanceOf('sfImage', $manager->generate('sfImageSource://mock', 'original'));
   }
 
   public function testGenerate()
   {
     $manager = new sfImageTransformManager($this->dummy_formats);
-    $this->assertType('sfImage', $manager->generate('sfImageSource://mock', 'original'));
+    $this->assertInstanceOf('sfImage', $manager->generate('sfImageSource://mock', 'original'));
   }
 
   protected function setUp()

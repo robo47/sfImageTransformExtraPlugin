@@ -63,7 +63,7 @@ class sfImageSourceFileTest extends PHPUnit_Framework_TestCase
   public function testStream_open()
   {
     $fh = fopen($this->testSourceUri, 'r');
-    $this->assertType(PHPUnit_Framework_Constraint_IsType::TYPE_RESOURCE, $fh);
+    $this->assertInternalType(PHPUnit_Framework_Constraint_IsType::TYPE_RESOURCE, $fh);
     fclose($fh);
   }
 
@@ -77,13 +77,13 @@ class sfImageSourceFileTest extends PHPUnit_Framework_TestCase
   public function testStream_stat()
   {
     $fh = fopen($this->testSourceUri, 'r');
-    $this->assertType(PHPUnit_Framework_Constraint_IsType::TYPE_ARRAY, fstat($fh));
+    $this->assertInternalType(PHPUnit_Framework_Constraint_IsType::TYPE_ARRAY, fstat($fh));
     fclose($fh);
   }
 
   public function testUrl_stat()
   {
-    $this->assertType(PHPUnit_Framework_Constraint_IsType::TYPE_ARRAY, stat($this->testSourceUri));
+    $this->assertInternalType(PHPUnit_Framework_Constraint_IsType::TYPE_ARRAY, stat($this->testSourceUri));
   }
 
   /**
